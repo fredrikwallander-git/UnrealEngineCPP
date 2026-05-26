@@ -467,6 +467,32 @@ For a local computation in a function body that never escapes, you can use std t
 
 ---
 
+## What is a Template (T)?
+
+You have been using templates without necessarily knowing it. `TArray<FName>`, `TMap<FName, int32>`, `TObjectPtr<UStaticMeshComponent>`, the angle brackets are the giveaway. <br>Everything between `<` and `>` is the type argument.
+
+A template is a way of writing one piece of code that works for many different types. `TArray` does not care whether it holds `int32`, `FName`, `AActor*`, or anything else. The same array code: add, remove, iterate, sort, works for all of them. You just tell it which type to use when you declare the variable.
+
+In C# you have seen the same concept under a different name: generics. `List<int>` in C# is equivalent to `TArray<int32>` in C++. `Dictionary<string, int>` is equivalent to `TMap<FString, int32>`. The angle bracket syntax is identical. The concept is identical. The word is different.
+
+```
+// C++ template
+TArray<FName> CollectedKeys;
+CollectedKeys.Add(TEXT("BrassKey"));
+
+// C# generic (equivalent concept)
+// List<string> collectedKeys = new List<string>();
+// collectedKeys.Add("BrassKey");
+```
+
+The difference between C++ templates and C# generics is mostly under the hood. C++ templates are resolved entirely at compile time: the compiler literally generates a separate version of `TArray` for each type you use it with. C# generics are resolved at runtime via the CLR's type system. For your purposes as a user of these types, the difference does not matter. You use them the same way.
+
+Where you will write your own templates in Unreal: almost never at this stage. You will use templates that Epic wrote: `TArray`, `TMap`, `TSet`, `TObjectPtr`, `TWeakObjectPtr`, `TSubclassOf`, `TOptional`, but you will not need to write the angle-bracket definitions yourself until you are building reusable engine-level systems.
+
+What you do need to be comfortable with is reading them. When you see `TSubclassOf<ADoor>`, read it as "a class variable that must be ADoor or a subclass of ADoor." When you see `TOptional<FHitResult>`, read it as "a HitResult that might or might not have a value." The type inside the angle brackets is the payload; the template class around it provides the behaviour.
+
+---
+
 ## Strings
 
 Unreal has three string types and they are not interchangeable.
