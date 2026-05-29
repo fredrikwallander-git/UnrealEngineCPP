@@ -376,8 +376,16 @@ void AEscapeRoomCharacter::Tick(float DeltaTime)
 
     FocusedInteractable = nullptr;
 
+    // First person line trace:
     FVector Start = FollowCamera->GetComponentLocation();
     FVector End   = Start + FollowCamera->GetForwardVector() * InteractRange;
+
+    // Third person line trace:
+    // FVector Start = GetActorLocation() + FVector(0, 0, BaseEyeHeight);
+    // FVector End   = Start + GetActorForwardVector() * InteractRange;
+    
+    // Optional debug draw line:
+    // DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, -1.0f, 0, 1.0f);
 
     FHitResult Hit;
     FCollisionQueryParams Params;
