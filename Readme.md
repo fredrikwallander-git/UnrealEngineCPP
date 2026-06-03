@@ -2,10 +2,18 @@
 
 Course material for the Spelprogrammering C++ section at Forsbergs skola.
 
-## Minimum requirements (G)
-All of the following are present and working:
+## Assignment Details:
 
-* A first-person playable character implemented in C++ (movement and look using Enhanced Input).
+The assignment is to make a sort of Escape Room game with blends of narrative interactions like The Stanley Parable.
+
+Recommended group size is 3-4 members.
+
+Presentations from each group will be held at the end of the course.
+
+### Minimum requirements (G)
+All the following are present and working:
+
+* A first- or third-person playable character implemented in C++ (movement and look using Enhanced Input).
 * An interaction system implemented in C++. This must be a reusable system, not hard-coded checks. The system should use either a C++ interface or a base interactable component. A door, a button, and a pickup must all use the same system.
 * At least two interconnected puzzles, where solving puzzle A enables or affects puzzle B in some way. Each puzzle must involve C++ logic (a state machine, an unlock condition, an item-combination check, etc.), not just BP triggers wired together.
 * A narrative trigger system in C++ that fires events based on player actions: at minimum: entering a volume, interacting with an object, completing a puzzle. The narrative reaction can be audio lines, on-screen text, environmental changes, or a combination.
@@ -13,7 +21,7 @@ All of the following are present and working:
 * A win/end state that the player can actually reach.
 * Source available in a GitHub repository with Git LFS tracking.
 
-## Excellent (VG)
+### Excellent (VG)
 All G requirements are met, plus:
 
 * Three interconnected puzzles with at least one puzzle whose solution depends on combining or sequencing earlier puzzle results.
